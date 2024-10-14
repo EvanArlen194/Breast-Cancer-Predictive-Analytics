@@ -101,17 +101,18 @@ Untuk memahami lebih dalam mengenai dataset, beberapa tahapan eksplorasi data di
 2. **Visualisasi Distribusi Kelas Target**:
    - Menggunakan `sns.countplot()` untuk memvisualisasikan distribusi antara kelas **Malignant** dan **Benign**. Hal ini penting untuk memahami keseimbangan kelas dalam dataset.
 
-   ![Distribusi Diagnosis](https://i.postimg.cc/3x1RLqzh/counplot.png)
+![countplot](https://github.com/user-attachments/assets/47a456a0-f76f-4233-94f7-bac9f1714487)
 
 3. **Visualisasi Distribusi Fitur Numerik**:
    - Menggunakan boxplot untuk melihat distribusi dari setiap fitur numerik. Ini membantu dalam mengidentifikasi outliers dan memahami sebaran data.
 
-   ![Distribusi Fitur Numerik](https://i.postimg.cc/hG3GndS3/boxplot-pencilan.png)
+![boxplot_pencilan](https://github.com/user-attachments/assets/a96bb8d5-b5fb-4e73-ba47-4f807450dff5)
+
 
 4. **Analisis Korelasi Antar Fitur**:
    - Menggunakan heatmap korelasi (`sns.heatmap()`) untuk melihat hubungan antar fitur. Fitur-fitur yang memiliki korelasi tinggi dapat mempengaruhi pemilihan fitur atau teknik reduksi dimensi.
 
-   ![Matriks Korelasi](https://i.postimg.cc/SRcQc1cw/sns-heatmap.png)
+![sns_heatmap](https://github.com/user-attachments/assets/45ad2012-b88a-44e0-9c30-3a928d5fbc6e)
 
 ### Kesimpulan
 
@@ -131,16 +132,16 @@ data_breast = data_breast.drop(columns=['Unnamed: 32', 'id'], axis=1)
 
 **Dataset Sebelum Menghapus Kolom**
 
-![KolomDatasetAsli](https://i.postimg.cc/Jz5fjVvN/sebelum-hapus-kolom.png)
+<img width="235" alt="sebelum_hapus_kolom" src="https://github.com/user-attachments/assets/6300d60c-282b-4569-b6fe-ec9d01300c38">
 
 **Dataset Sesudah Menghapus Kolom**
 
-![KolomDatasetSesudah](https://i.postimg.cc/NMMpyWvj/setelah-hapus-kolom.png)
+<img width="243" alt="setelah_hapus_kolom" src="https://github.com/user-attachments/assets/912657a9-35f3-4523-881a-de63b227eca7">
 
 ### 2. Mendeteksi dan Menangani Pencilan
 Pencilan akan dideteksi dan dihapus menggunakan **EllipticEnvelope**.
 - **EllipticEnvelope** digunakan untuk mendeteksi pencilan berdasarkan asumsi distribusi Gaussian multivariat.
-![GaussianMultivariate](https://i.postimg.cc/PJMW2yjR/multivariate-gaussian-models.jpg)
+![multivariate-gaussian-models](https://github.com/user-attachments/assets/a027470a-42c7-4af4-a833-0c4a4158d955)
 - Data dengan pencilan akan dihapus agar tidak mempengaruhi model yang akan dilatih.
 
 **Langkah**:
@@ -158,7 +159,7 @@ for feature in numerical_features:
 
 print(f"Ukuran dataset setelah pencilan dihapus: {data_breast.shape}")
 ```
-![UkuranDatasetSetelahPencilanDihapus](https://i.postimg.cc/rmrgC5sB/ukuran-dataset-setelah-pencilan-dihapus.png)
+<img width="223" alt="ukuran-dataset-setelah-pencilan-dihapus" src="https://github.com/user-attachments/assets/03fb0c36-0b94-4e99-8f5b-db92a0b3292c">
 
 ### 3. Memetakan Kelas Target
 Kolom `diagnosis` berisi label kategoris dalam bentuk huruf, yaitu M untuk malignant (ganas) dan B untuk benign (jinak). Algoritma machine learning umumnya memerlukan data dalam format numerik. Untuk memudahkan pemodelan, label ini diubah menjadi nilai numerik, di mana M menjadi 1 dan B menjadi 0.
@@ -186,7 +187,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_
 print("Distribusi kelas di y_train:")
 print(y_train.value_counts())
 ```
-![DistribusiKelasy_train](https://i.postimg.cc/mrF70B4M/y-train.png)
+<img width="166" alt="y_train" src="https://github.com/user-attachments/assets/11d39934-9b9e-4beb-b4fe-b16ea2178111">
 
 ### 6. Menggunakan SMOTE untuk Oversampling
 Sebelum menerapkan SMOTE (Synthetic Minority Over-sampling Technique), peneliti memeriksa apakah ada lebih dari satu kelas dalam y_train. Jika ada, peneliti menggunakan SMOTE untuk menyeimbangkan kelas dengan membuat contoh sintetis dari kelas minoritas. Jika SMOTE diterapkan, peneliti akan melihat distribusi kelas di y_train_balanced untuk memastikan bahwa kelas sudah seimbang setelah proses oversampling.
@@ -202,12 +203,12 @@ if len(np.unique(y_train)) > 1:
 else:
     print("Hanya ada satu kelas di y_train, tidak ada SMOTE yang diterapkan.")
 ```
-![DistribusiKelasSetelahSMOTE](https://i.postimg.cc/nh9sL2Wf/kelas-setelah-SMOTE.png)
+<img width="182" alt="kelas_setelah_SMOTE" src="https://github.com/user-attachments/assets/108e137f-cd7a-4fa1-8df3-54f96e766858">
 
 ### 7. Normalisasi Data
 Karena beberapa algoritma machine learning seperti Support Vector Machine (SVM) dan K-Nearest Neighbors (KNN) sensitif terhadap skala data, peneliti melakukan normalisasi menggunakan StandardScaler. Teknik ini mengubah fitur sehingga memiliki distribusi dengan rata-rata 0 dan standar deviasi 1. Hal ini karena normalisasi membantu memastikan bahwa fitur dengan skala yang lebih besar tidak mendominasi fitur dengan skala yang lebih kecil. Ini sangat penting untuk algoritma yang menghitung jarak antar data seperti KNN dan SVM.
 
-![StandardScaler](https://i.postimg.cc/BnSDQ20q/standard-scaler.png)
+![standard_scaler](https://github.com/user-attachments/assets/4d6d3156-ce5a-463b-b9b9-fe730de6eb7f)
 
 **Langkah**:
 ``` python
@@ -254,12 +255,12 @@ Pada proyek ini, beberapa algoritma machine learning diterapkan untuk menyelesai
   - Rentan terhadap overfitting jika tidak dilakukan pruning pada pohon yang terlalu dalam.
 
 ### Pemilihan Model Terbaik
-[![hasil-model.png](https://i.postimg.cc/m2Tb1w6F/hasil-model.png)](https://postimg.cc/14YxLpS9)
+<img width="233" alt="hasil_model" src="https://github.com/user-attachments/assets/1483f9bf-f361-4f90-8c57-565a7c778658">
 
 Setelah melatih ketiga model, model **Support Vector Classifier (SVC)** dipilih sebagai model terbaik karena memiliki akurasi tertinggi pada set pengujian, yaitu **98.36%**. Model ini dipilih karena mampu memisahkan kelas dengan sangat baik dan performa yang optimal pada data ini.
 Untuk membuktikannya, model **Support Vector Classifier (SVC)** diuji pada data uji dan di visualisasikan pada confussion matrix seperti berikut.
 
-[![predicted.png](https://i.postimg.cc/bN6jDjtK/predicted.png)](https://postimg.cc/MvjLNNtD)
+![predicted](https://github.com/user-attachments/assets/e945f986-f3b1-4af9-b92b-713b1fc54845)
 
 Visualisasi di atas menunjukkan bahwa bagian kiri atas mewakili TN (True Negative), yaitu data negatif yang diprediksi dengan benar, sedangkan bagian kanan bawah menunjukkan data positif yang diprediksi dengan benar. Sebaliknya, bagian kanan atas menampilkan data False Negative, yaitu data positif yang salah diprediksi sebagai negatif, dan bagian kiri bawah menampilkan False Positive, yaitu data negatif yang salah diprediksi sebagai positif.
 
@@ -267,10 +268,11 @@ Visualisasi di atas menunjukkan bahwa bagian kiri atas mewakili TN (True Negativ
 
 Pada proyek ini, model yang dikembangkan berfokus pada kasus klasifikasi dan menggunakan metrik evaluasi yang mencakup **akurasi**, **F1-score**, **recall**, dan **precision**. Hasil pengukuran performa model terbaik yang menggunakan algoritma **Support Vector Classifier (SVC)** dapat dilihat pada tabel di bawah ini:
 
-[![Support-Vector-Classifier.png](https://i.postimg.cc/pTnSspqF/Support-Vector-Classifier.png)](https://postimg.cc/2brT68pk)
+<img width="317" alt="SupportVectorClassifier" src="https://github.com/user-attachments/assets/f4c0a699-ffe9-4eb1-a35c-643b0a99e829">
 
 ### Pejelasan Metrik
-[![metric.png](https://i.postimg.cc/Jz64LkxH/metric.png)](https://postimg.cc/ZWNhP01J)
+
+<img width="122" alt="metric" src="https://github.com/user-attachments/assets/72c9c8b3-768f-46f7-b5e7-0a7441810b7e">
 
 ### Akurasi
 Akurasi adalah metrik yang digunakan untuk mengukur proporsi total data yang berhasil diprediksi dengan benar oleh model.
