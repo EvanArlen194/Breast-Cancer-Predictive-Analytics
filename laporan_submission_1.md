@@ -124,6 +124,9 @@ Untuk memahami lebih dalam mengenai dataset, beberapa tahapan eksplorasi data di
        harapan.
      - Memastikan bahwa kolom dan data yang relevan: Dapat digunakan untuk memastikan bahwa kolom yang diharapkan ada dan 
        memiliki data yang benar.
+       
+<img width="902" alt="data_breast head()" src="https://github.com/user-attachments/assets/aaaaf5f7-1a85-456b-90c2-93393e6a944f">
+
    - Menggunakan `data_breast.isnull().sum()` untuk memeriksa apakah terdapat nilai yang hilang dalam dataset. Jika ada missing values, output akan menunjukkan jumlah nilai yang hilang untuk setiap kolom. Jika ada missing values, perlu dilakukan penanganan seperti menghapus, mengisi dengan nilai rata-rata, atau menggunakan teknik imputasi.
      
      <img width="134" alt="missing-value" src="https://github.com/user-attachments/assets/34850651-c356-41d2-a374-637e86bc371d">
@@ -142,6 +145,7 @@ Untuk memahami lebih dalam mengenai dataset, beberapa tahapan eksplorasi data di
      - Cek Jumlah Outlier: 
      Jumlah outlier dihitung untuk setiap fitur dengan membandingkan nilai-nilai dalam kolom numerik terhadap batas bawah dan atas. Hasilnya ditampilkan untuk memberikan gambaran tentang jumlah outlier yang ada di setiap fitur.
 
+
       <img width="143" alt="outlier" src="https://github.com/user-attachments/assets/1c21f8d0-d12d-4243-8fae-8f0ab23cb24b">
 
 1. **Visualisasi Distribusi Kelas Target**:
@@ -156,7 +160,7 @@ Untuk memahami lebih dalam mengenai dataset, beberapa tahapan eksplorasi data di
 
 
 4. **Analisis Korelasi Antar Fitur**:
-   - Menggunakan heatmap korelasi (`sns.heatmap()`) untuk melihat hubungan antar fitur. Fitur-fitur yang memiliki korelasi tinggi dapat mempengaruhi pemilihan fitur atau teknik reduksi dimensi.
+   - Menggunakan heatmap korelasi (`sns.heatmap()`) untuk melihat hubungan antar fitur. Dengan menghitung matriks korelasi dan memvisualisasikannya, kita dapat mengidentifikasi fitur-fitur yang memiliki hubungan kuat dengan kolom target, serta hubungan antar fitur. Visualisasi ini memberikan informasi berharga, seperti fitur mana yang saling berkorelasi, sehingga kita dapat menghindari multikolinearitas yang dapat mempengaruhi model. Misalnya, jika dua fitur sangat berkorelasi, kita mungkin mempertimbangkan untuk menghapus salah satu dari keduanya untuk menyederhanakan model dan meningkatkan interpretabilitasnya.
 
 ![sns_heatmap](https://github.com/user-attachments/assets/45ad2012-b88a-44e0-9c30-3a928d5fbc6e)
 
