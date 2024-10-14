@@ -96,9 +96,42 @@ Untuk memahami lebih dalam mengenai dataset, beberapa tahapan eksplorasi data di
 
 1. **Pemeriksaan Dimensi dan Tipe Data**:
    - Menggunakan `data_breast.info()` untuk melihat jumlah baris dan kolom, serta tipe data dari setiap variabel.
-   - Menggunakan `data_breast.describe()` untuk mendapatkan statistik deskriptif seperti mean, median, standar deviasi, dan nilai maksimum/minimum dari fitur numerik.
+
+     <img width="217" alt="data_breast info()" src="https://github.com/user-attachments/assets/b56240e7-d877-49f0-a970-ca3b220e6810">
+
+     Fungsi ini digunakan untuk mendapatkan informasi ringkas tentang DataFrame data_breast. Hasil keluaran dari fungsi ini 
+     mencakup:
+      - baris dan kolom: Memberikan gambaran umum tentang ukuran dataset.
+      - Tipe data dari setiap variabel: Menunjukkan tipe data dari setiap kolom, seperti integer, float, dan objek. Ini 
+        penting untuk memahami jenis analisis atau transformasi yang mungkin perlu dilakukan pada data.
+      - Jumlah nilai non-null: Menunjukkan berapa banyak entri yang tidak kosong dalam setiap kolom, yang membantu dalam            mendeteksi missing values (nilai yang hilang).
+   - Menggunakan `data_breast.describe()`
+     Fungsi ini memberikan statistik deskriptif dari DataFrame, khususnya untuk kolom-kolom numerik. Hasil yang ditampilkan      mencakup:
+
+      - Mean (rata-rata): Nilai rata-rata dari setiap kolom.
+      - Median (nilai tengah): Nilai yang membagi dataset menjadi dua bagian yang sama.
+      - Standar deviasi: Mengukur seberapa tersebar nilai-nilai dari rata-rata. Semakin besar nilai standar deviasi,       
+        semakin besar variasi data.
+      - Minimum dan maksimum: Nilai terendah dan tertinggi dari setiap kolom. Ini membantu untuk memahami rentang nilai 
+        dari fitur.
+      - Kuartil: Nilai yang membagi data menjadi empat bagian yang sama, membantu untuk memahami distribusi data.
+   - Menggunakan `data_breast.head()`
+     Fungsi ini menampilkan beberapa baris pertama dari DataFrame data_breast (secara default 5 baris). Kegunaannya adalah:
+
+     - Melihat data secara langsung: Memungkinkan pengguna untuk mendapatkan gambaran langsung tentang nilai-nilai dalam    
+       dataset.
+     - Memeriksa format dan konten: Membantu dalam memverifikasi bahwa data telah dimuat dengan benar dan sesuai dengan 
+       harapan.
+     - Memastikan bahwa kolom dan data yang relevan: Dapat digunakan untuk memastikan bahwa kolom yang diharapkan ada dan 
+       memiliki data yang benar.
    - Menggunakan `data_breast.isnull().sum()` untuk memeriksa apakah terdapat nilai yang hilang dalam dataset. Jika ada missing values, output akan menunjukkan jumlah nilai yang hilang untuk setiap kolom. Jika ada missing values, perlu dilakukan penanganan seperti menghapus, mengisi dengan nilai rata-rata, atau menggunakan teknik imputasi.
+     
+     <img width="134" alt="missing-value" src="https://github.com/user-attachments/assets/34850651-c356-41d2-a374-637e86bc371d">
+
    - Menggunakan `data_breast.duplicated().sum()` untuk menghitung jumlah baris yang merupakan duplikat dalam dataset. Data duplikat dapat menyebabkan bias dalam model dan analisis, sehingga penting untuk memeriksanya. Jika ditemukan, langkah selanjutnya biasanya adalah menghapus baris-baris duplikat untuk memastikan keakuratan analisis.
+     
+      <img width="90" alt="duplikat" src="https://github.com/user-attachments/assets/a4f82ab9-fa5a-4aad-88a2-e6373316a62e">
+
    - Bagian ini fokus pada deteksi outlier menggunakan metode Interquartile Range (IQR):
      - Pemilihan Kolom Numerik: Hanya kolom yang memiliki tipe data numerik (float64 dan int64) yang dipilih untuk analisis outlier. Hal ini penting karena IQR hanya relevan untuk data numerik.
      - Perhitungan IQR:
@@ -109,7 +142,9 @@ Untuk memahami lebih dalam mengenai dataset, beberapa tahapan eksplorasi data di
      - Cek Jumlah Outlier: 
      Jumlah outlier dihitung untuk setiap fitur dengan membandingkan nilai-nilai dalam kolom numerik terhadap batas bawah dan atas. Hasilnya ditampilkan untuk memberikan gambaran tentang jumlah outlier yang ada di setiap fitur.
 
-2. **Visualisasi Distribusi Kelas Target**:
+      <img width="143" alt="outlier" src="https://github.com/user-attachments/assets/1c21f8d0-d12d-4243-8fae-8f0ab23cb24b">
+
+1. **Visualisasi Distribusi Kelas Target**:
    - Menggunakan `sns.countplot()` untuk memvisualisasikan distribusi antara kelas **Malignant** dan **Benign**. Hal ini penting untuk memahami keseimbangan kelas dalam dataset. Dengan menggunakan countplot, kita dapat melihat proporsi antara kategori Malignant (kanker ganas) dan Benign (kanker jinak) dalam data. Visualisasi ini menunjukkan ketidakseimbangan antara kedua kelas, yang penting untuk dipertimbangkan saat memilih teknik pemodelan dan evaluasi. Misalnya, jika salah satu kelas jauh lebih banyak daripada yang lain, ini dapat mempengaruhi hasil model, sehingga teknik seperti SMOTE mungkin diperlukan untuk menyeimbangkan data.
 
 ![countplot](https://github.com/user-attachments/assets/47a456a0-f76f-4233-94f7-bac9f1714487)
