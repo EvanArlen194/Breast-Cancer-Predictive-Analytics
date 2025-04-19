@@ -1,6 +1,3 @@
-Ini merupakan repositori saya untuk Submission: Machine Learning Terapan dari Dicoding Indonesia dan DBS Foundation Coding Camp 2024
-
-
 # Laporan Proyek Machine Learning - Evan Arlen Handy
 
 ## Domain Proyek
